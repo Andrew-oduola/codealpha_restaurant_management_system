@@ -6,6 +6,9 @@ class Inventory(models.Model):
     quantity = models.IntegerField()
     unit = models.CharField(max_length=50)
     reorder_level = models.IntegerField()
+    supplier = models.CharField(max_length=100, null=True, blank=True)
+    last_ordered = models.DateTimeField(null=True, blank=True)
+
 
     def __str__(self):
         return self.item_name
