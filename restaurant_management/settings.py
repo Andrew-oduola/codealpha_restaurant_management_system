@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+from datetime import timedelta
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -40,6 +41,7 @@ INSTALLED_APPS = [
 
     'drf_yasg',
     'rest_framework',
+    'djoser',
 
     'customusers',
     'restaurant',
@@ -144,3 +146,25 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'customusers.CustomUser'
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+    'DEFAULT_THROTTLE_CLASSES': [
+        'rest_framework.throttling.AnonRateThrottle',  # For unauthenticated users
+        'rest_framework.throttling.UserRateThrottle',  # For authenticated users
+    ],
+    'DEFAULT_THROTTLE_RATES': {
+        'anon': '10/minute',  # 10 requests per minute for anonymous users
+        'user': '100/hour',   # 100 requests per hour for authenticated users
+    },
+    # x
+}
+
+SIMPLE_JWT = {
+   'AUTH_HEADER_TYPES': ('JWT',),
+   'ACCESS_TOKEN_LIFETIME': timedelta(days=5),  # Set the access token lifetime
+   'REFRESH_TOKEN_LIFETIME': timedelta(days=1),    # Set the refresh token lifetime
+}
+
