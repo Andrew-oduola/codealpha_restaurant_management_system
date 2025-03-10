@@ -6,6 +6,7 @@ class Table(models.Model):
     capacity = models.IntegerField()
     is_occupied = models.BooleanField(default=False)
     location = models.CharField(max_length=100, null=True, blank=True)
+    seats = models.IntegerField()
 
 
     def __str__(self):
