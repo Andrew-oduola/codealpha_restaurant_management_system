@@ -37,7 +37,7 @@ urlpatterns = [
     path('api/tables/', include('tables.urls')),
     path('api/reservations/', include('reservations.urls')),
     path('api/orders/', include('orders.urls')),
-    # path('api/reporting/', include('reporting.urls')),
+    path('api/reports/', include('reporting.urls')),
     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
     
