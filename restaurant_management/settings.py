@@ -23,6 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-7d0yje1qk$zj25*#1(k$)2^eg4hh8_uhpav-s7azk&5w5!qb1='
 
+# filepath: e:\Programs\codealpha_restaurant_management_system\settings.py
+SWAGGER_USE_COMPAT_RENDERERS = False
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
