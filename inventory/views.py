@@ -15,3 +15,4 @@ class InventoryViewSet(viewsets.ModelViewSet):
         serializer = self.get_serializer(low_stock_items, many=True)
         return Response(serializer.data)
 
+    
