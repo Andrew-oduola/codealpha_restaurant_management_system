@@ -8,3 +8,4 @@ router.register(r'', TableViewSet)
 urlpatterns = [
     path('', include(router.urls)),
 ]
+

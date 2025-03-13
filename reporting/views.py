@@ -10,3 +10,4 @@ class InventoryReportViewSet(viewsets.ModelViewSet):
 class SalesReportViewSet(viewsets.ModelViewSet):
     queryset = SalesReport.objects.all()
     serializer_class = SalesReportSerializers
+
