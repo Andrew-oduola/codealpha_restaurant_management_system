@@ -7,6 +7,7 @@ from reservations.models import Reservation
 from .serializers import InventoryReportSerializer, SalesReportSerializer
 from .models import InventoryReport, SalesReport
 
+
 # Create your views here.
 class InventoryReportViewSet(viewsets.ModelViewSet):
     queryset = InventoryReport.objects.all()
