@@ -12,7 +12,7 @@ from model_bakery import baker
 User = get_user_model()
 
 @pytest.mark.django_db
-class TestRetriveInventory(APITestCase):
+class TestRetriveMenu(APITestCase):
     def setUp(self):
         self.api_client = APIClient()
         self.user = User.objects.create_user(email='testuser@gmail.com', password='testpass')
