@@ -26,14 +26,20 @@ class OrderViewSet(viewsets.ModelViewSet):
         order = Order.objects.create(table_id=table_id)
 
         # Prepare OrderItem objects for bulk_create
-        order_items = [
-            OrderItem(
-                order=order,
-                menu_item_id=item['menu_item'],
-                quantity=item['quantity']
-            )
-            for item in items_data
-        ]
+        order_items = []
+        for item in items_data:
+            try:
+                order_items.append(OrderItem(
+                    order=order,
+                    menu_item_id=item['menu_item'],
+                    quantity=item['quantity']
+                ))
+            except KeyError as e:
+                return Response(
+                    {'error': f'Missing key in items data: {str(e)}'},
+                    status=status.HTTP_400_BAD_REQUEST
+                )
+
         OrderItem.objects.bulk_create(order_items)  # Efficient batch insert
 
         # Calculate total price using OrderItem (not order.items.all())
