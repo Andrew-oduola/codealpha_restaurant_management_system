@@ -1,17 +1,20 @@
 from rest_framework import viewsets
 from rest_framework.decorators import action
 from rest_framework.response import Response
+from rest_framework.permissions import IsAuthenticated
 from django.db.models import Count, Sum
 from orders.models import OrderItem
 from reservations.models import Reservation     
 from .serializers import InventoryReportSerializer, SalesReportSerializer
 from .models import InventoryReport, SalesReport
+from .permissions import IsAdminOrReadOnly
 
 
 # Create your views here.
 class InventoryReportViewSet(viewsets.ModelViewSet):
     queryset = InventoryReport.objects.all()
     serializer_class = InventoryReportSerializer
+    permission_classes = [IsAuthenticated, IsAdminOrReadOnly]
 
     @action(detail=False, methods=['get'], url_path='popular-items', url_name='popular_items')
     def popular_items(self, request):
@@ -28,9 +31,10 @@ class InventoryReportViewSet(viewsets.ModelViewSet):
 class SalesReportViewSet(viewsets.ModelViewSet):
     queryset = SalesReport.objects.all()
     serializer_class = SalesReportSerializer
+    permission_classes = [IsAuthenticated, IsAdminOrReadOnly]
 
     @action(detail=False, methods=['get'], url_path='daily-sales', url_name='daily_sales')
     def daily_sales(self, request):
         daily_sales = SalesReport.objects.values('date').annotate(total_sales=Sum('total_sales')).order_by('-date')
         return Response(daily_sales)
-
+ 
