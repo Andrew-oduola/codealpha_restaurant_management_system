@@ -14,7 +14,7 @@ from .permissions import IsAdminOrReadOnly
 class ReservationViewSet(viewsets.ModelViewSet):
     queryset = Reservation.objects.all()
     serializer_class = ReservationSerializer
-    permission_classes = [IsAuthenticated, IsAdminOrReadOnly]
+    permission_classes = [IsAuthenticated]
 
     @action(detail=False, methods=['get'], url_path='available-tables', url_name='available-tables')
     def get_available_tables(self, request):
