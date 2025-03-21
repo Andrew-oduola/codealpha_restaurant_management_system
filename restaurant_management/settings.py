@@ -47,7 +47,6 @@ INSTALLED_APPS = [
     'djoser',
 
     'customusers',
-    'restaurant',
     'orders',
     'inventory',
     'tables',
