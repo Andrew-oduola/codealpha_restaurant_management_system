@@ -2,6 +2,7 @@ from rest_framework import viewsets, status
 from rest_framework.response import Response
 from rest_framework.decorators import action
 from rest_framework.permissions import IsAuthenticated
+from rest_framework.throttling import UserRateThrottle, AnonRateThrottle
 from django.utils.dateparse import parse_datetime
 from .serializers import ReservationSerializer
 from .models import Reservation
@@ -15,6 +16,7 @@ class ReservationViewSet(viewsets.ModelViewSet):
     queryset = Reservation.objects.all()
     serializer_class = ReservationSerializer
     permission_classes = [IsAuthenticated]
+    throttle_classes = [UserRateThrottle, AnonRateThrottle]
 
     @action(detail=False, methods=['get'], url_path='available-tables', url_name='available-tables')
     def get_available_tables(self, request):

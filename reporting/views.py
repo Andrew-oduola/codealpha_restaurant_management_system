@@ -5,6 +5,7 @@ from rest_framework.permissions import IsAuthenticated
 from django.db.models import Count, Sum
 from orders.models import OrderItem
 from reservations.models import Reservation     
+from rest_framework.throttling import UserRateThrottle, AnonRateThrottle
 from .serializers import InventoryReportSerializer, SalesReportSerializer
 from .models import InventoryReport, SalesReport
 from .permissions import IsAdminOrReadOnly
@@ -15,6 +16,7 @@ class InventoryReportViewSet(viewsets.ModelViewSet):
     queryset = InventoryReport.objects.all()
     serializer_class = InventoryReportSerializer
     permission_classes = [IsAuthenticated, IsAdminOrReadOnly]
+    throttle_classes = [UserRateThrottle, AnonRateThrottle]
 
     @action(detail=False, methods=['get'], url_path='popular-items', url_name='popular_items')
     def popular_items(self, request):
@@ -32,6 +34,7 @@ class SalesReportViewSet(viewsets.ModelViewSet):
     queryset = SalesReport.objects.all()
     serializer_class = SalesReportSerializer
     permission_classes = [IsAuthenticated, IsAdminOrReadOnly]
+    throttle_classes = [UserRateThrottle, AnonRateThrottle]
 
     @action(detail=False, methods=['get'], url_path='daily-sales', url_name='daily_sales')
     def daily_sales(self, request):
