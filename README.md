@@ -4,7 +4,7 @@
 
 ## Overview
 
-Welcome to the **Restaurant Management System API**! This project is a robust restaurant management system built using **Django** and **Django REST Framework (DRF)**. It provides functionalities for managing restaurant operations, including **user authentication, inventory management, menu handling, order processing, table reservations, reporting, and analytics**.
+Welcome to the **Restaurant Management System API**! This project is a robust restaurant management system built using **Django** and **Django REST Framework (DRF)**. It provides functionalities for managing restaurant operations, rate limiting, including **user authentication, inventory management, menu handling, order processing, table reservations, reporting, and analytics**.
 
 Additionally, the project includes **test coverage analysis using Coverage.py**, ensuring that at least **90%** of the codebase is covered by unit tests written with **pytest**.
 
