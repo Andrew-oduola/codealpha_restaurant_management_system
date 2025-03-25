@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'drf_yasg',
     'rest_framework',
     'djoser',
+    'django_filters',
 
     'customusers',
     'orders',
@@ -129,7 +130,9 @@ REST_FRAMEWORK = {
     'DEFAULT_THROTTLE_RATES': {
         'anon': '10/minute',  # 10 requests per minute for anonymous users
         'user': '100/hour',   # 100 requests per hour for authenticated users
-    }
+    },
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
+
 }
 
 
