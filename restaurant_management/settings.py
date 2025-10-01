@@ -123,13 +123,13 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
-    'DEFAULT_THROTTLE_CLASSES': [
-        'rest_framework.throttling.AnonRateThrottle',  # For unauthenticated users
-        'rest_framework.throttling.UserRateThrottle',  # For authenticated users
-    ],
+    # 'DEFAULT_THROTTLE_CLASSES': [
+    #     'rest_framework.throttling.AnonRateThrottle',  # For unauthenticated users
+    #     'rest_framework.throttling.UserRateThrottle',  # For authenticated users
+    # ],
     'DEFAULT_THROTTLE_RATES': {
-        'anon': '10/minute',  # 10 requests per minute for anonymous users
-        'user': '100/hour',   # 100 requests per hour for authenticated users
+        'anon': '100000/minute',  # 10 requests per minute for anonymous users
+        'user': '10000000/hour',   # 100 requests per hour for authenticated users
     },
     'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
 

@@ -11,8 +11,8 @@ from .permissions import IsAdminOrReadOnly
 class MenuItemViewSet(viewsets.ModelViewSet):
     queryset = MenuItem.objects.all()
     serializer_class = MenuItemSerializer
-    permission_classes = [IsAuthenticated, IsAdminOrReadOnly]
-    throttle_classes = [UserRateThrottle, AnonRateThrottle]
+    # permission_classes = [IsAuthenticated, IsAdminOrReadOnly]
+    # throttle_classes = [UserRateThrottle, AnonRateThrottle]
     filter_backends = [DjangoFilterBackend, filters.SearchFilter, filters.OrderingFilter]
     filterset_fields = ['category', 'available', 'price']
     search_fields = ['name', 'description']
@@ -28,8 +28,8 @@ class MenuItemViewSet(viewsets.ModelViewSet):
 class MenuCategoryViewSet(viewsets.ModelViewSet):
     queryset = MenuCategory.objects.all()
     serializer_class = MenuCategorySerializer
-    permission_classes = [IsAuthenticated, IsAdminOrReadOnly]
-    throttle_classes = [UserRateThrottle, AnonRateThrottle]
+    # permission_classes = [IsAuthenticated, IsAdminOrReadOnly]
+    # throttle_classes = [UserRateThrottle, AnonRateThrottle]
     filter_backends = [DjangoFilterBackend, filters.SearchFilter, filters.OrderingFilter]
     search_fields = ['name', 'description']
     ordering_fields = ['name']
